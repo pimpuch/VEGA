@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Maplub/advmap/master/inf_waste.csv"
+  },
+  "title": "Waste Data in Bangkok (Oct2017-Sep2018)",
+  "width": 500,
+  "height": 600,
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "opacity": 0.5,
+        "tooltip": {
+          "content": "data"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "nominal",
+          "title": "Time(Year/Month)"
+        },
+        "y": {
+          "field": "wasteamt",
+          "type": "quantitative",
+          "title": "Amount of waste and Mean of waste"
+        }
+      }
+    },
+    {
+      "mark": {
+        "color": "red",
+        "size": 2,
+        "type": "line"
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "nominal"
+        },
+        "y": {
+          "aggregate": "mean",
+          "field": "wasteamt",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "month",
+            "type": "nominal"
+          },
+          {
+            "aggregate": "mean",
+            "field": "wasteamt",
+            "type": "quantitative"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
